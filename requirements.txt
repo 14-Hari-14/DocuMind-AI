@@ -1,0 +1,36 @@
+# Core Backend
+fastapi==0.109.1
+uvicorn==0.27.0
+python-multipart==0.0.6
+python-dotenv==1.0.0
+gunicorn==21.2.0
+
+# Document Processing
+pypdf==4.1.0
+pytesseract==0.3.10
+pillow==10.2.0
+unstructured==0.12.2
+pdf2image==1.17.0
+opencv-python-headless==4.8.1.78  # Required for pdf2image
+
+# AI/ML Components
+langchain-community==0.0.29
+langchain-core==0.1.33
+chromadb==0.4.22
+sentence-transformers==2.2.2
+huggingface-hub==0.19.4  # Required for sentence-transformers
+transformers==4.36.2  # Required for sentence-transformers
+torch==2.1.2  # Required with CUDA if available
+
+# Embedding Options (choose one)
+openai==1.12.0  # For paid embeddings
+# OR for free embeddings:
+huggingface-hub==0.19.4
+sentence-transformers==2.2.2
+
+# Frontend
+streamlit==1.31.0
+
+# Optional Utilities
+numpy==1.26.3  # Required for multiple ML packages
+tqdm==4.66.1  # Progress bars

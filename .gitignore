@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# Build and distribution files
+build/
+dist/
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Database files
+*.db
+*.sqlite
+chroma_db/  # Vector database storage
+data/       # Uploaded documents
+
+# Log files
+*.log
+logs/
+
+# OCR and document processing temp files
+*.jpg
+*.png
+*.temp
+*.tmp
+
+# Python cache and test files
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Streamlit cache
+.streamlit/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Hugging Face cache
+.cache/
+.huggingface/
+
+# Package manager files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Documentation
+docs/_build/
