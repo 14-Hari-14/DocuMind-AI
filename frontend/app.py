@@ -5,7 +5,7 @@ import io
 
 # --- Config ---
 st.set_page_config(page_title="DocuMind", page_icon="📚", layout="centered")
-BACKEND_URL = "http://localhost:8502"  # Change if deployed
+BACKEND_URL = "http://localhost:8000"  # Change if deployed
 
 # --- Styles ---
 def local_css(file_name):
