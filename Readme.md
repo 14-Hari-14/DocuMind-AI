@@ -93,14 +93,6 @@ document-chatbot/
 
    Create a `.env` file in the root directory:
 
-   # Optional: Add Tesseract path if not in system PATH
-
-   TESSERACT_PATH=/usr/bin/tesseract
-
-   # Backend API URL (default for local development)
-
-   BACKEND_URL=http://localhost:8000
-
 5. **Run the Application**:
 
    - **Start the Backend**:
@@ -113,44 +105,18 @@ document-chatbot/
      ```
    - Access the app at `http://localhost:8501`.
 
-### Docker Setup
-
-1. **Build the Docker Image**:
-
-   ```bash
-   docker build -t document-chatbot .
-   ```
-
-   Example `Dockerfile`:
-
-   FROM python:3.8-slim
-
-   WORKDIR /app
-
    # Install system dependencies
 
    RUN apt-get update && apt-get install -y \
     tesseract-ocr \
     poppler-utils \
-    && rm -rf /var/lib/apt/lists/\*
-
-   # Copy project files
-
-   COPY . .
-
-   # Install Python dependencies
-
-   RUN pip install --no-cache-dir -r requirements.txt
-
-   # Expose ports
-
-   EXPOSE 8000 8501
+    && rm -rf /var/lib/apt/lists/\
 
    # Command to run backend and frontend
 
    CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port 8000 & streamlit run frontend/app.py --server.port 8501"]
 
-2. **Run the Container**:
+6. **Run the Container**:
 
    ```bash
    docker run -p 8000:8000 -p 8501:8501 -v $(pwd)/data:/app/data -v $(pwd)/chroma_db:/app/chroma_db document-chatbot
@@ -179,32 +145,6 @@ document-chatbot/
      ```bash
      curl -X POST http://localhost:8000/clear
      ```
-
-## File Storage Options
-
-The application supports two approaches for handling uploaded files, configurable in `backend/main.py`:
-
-- **Temporary Storage (Default)**:
-
-  - Files are saved to `data/` during processing and deleted afterward.
-  - Text and metadata are stored in `chroma_db/` for querying.
-  - **Pros**: Saves disk space, aligns with task’s database focus.
-  - **Cons**: Original files aren’t accessible after processing.
-
-- **Persistent Storage**:
-  - Files are saved to `data/documents/` and retained.
-  - Modify `main.py` to remove `os.remove(file_path)` and store file paths:
-    ```python
-    # In backend/main.py, /upload endpoint
-    os.makedirs("data/documents", exist_ok=True)
-    file_path = f"data/documents/{document_id}"
-    metadata["file_path"] = file_path
-    # Remove os.remove(file_path)
-    ```
-  - **Pros**: Enables file access for original files, supports viewing/downloading.
-  - **Cons**: Increases disk space usage.
-
-**Recommendation**: The default temporary storage is recommended for space-efficient operation and compliance with the internship task’s focus on database storage. Use persistent storage if you need to access original files (e.g., for debugging or UI file previews). To manage `chroma_db` growth, adjust chunk size in `vector_db.py` (e.g., `chunk_size=300`) or periodically clear the collection.
 
 ## API Documentation
 
@@ -253,7 +193,7 @@ Contributions are welcome! To contribute:
 2. Create a feature branch (`git checkout -b feature-name`).
 3. Commit changes (`git commit -m "Add feature"`)`.
 4. Push to the branch (`git push origin feature-name`).
-5. Open a pull request).
+5. Open a pull request.
 
 Please include tests and update documentation for new features.
 
@@ -266,23 +206,3 @@ This project is licensed under the [MIT License](LICENSE).
 - Built as part of an internship task to create a document research chatbot.
 - Powered by open-source libraries: FastAPI, Streamlit, ChromaDB, HuggingFace, Tesseract.
 - Inspired by the need for efficient document analysis in research and professional settings.
-
----
-
-### Notes on Enhancements
-
-- **Structure**: Organized into clear sections (Features, Tech Stack, Getting Started, etc.) for accessibility.
-- **Storage Options**: Addressed your concern about `data` and `chroma_db` by explaining both storage approaches and recommending temporary storage to manage space.
-- **Artifacts**: Included `requirements.txt`, `.env`, and `Dockerfile` as artifacts with unique UUIDs, per guidelines.
-- **Deployment**: Added Render instructions, as mentioned in the tech stack, with Docker support for portability.
-- **Task Alignment**: Emphasized semantic search, theme identification, and document viewing to meet internship requirements.
-- **Contributing**: Added a contributing section to encourage collaboration, suitable for an open-source project.
-
-### Next Steps
-
-- **Test the README**: Save it as `README.md` in your project root and verify links, commands, and instructions work.
-- **Customize**: Update placeholders (e.g., `your-username`, `your-email@example.com`, GitHub repo URL).
-- **Enhancements**: If you need features like file downloading, LLM-based theme identification, or advanced OCR, let me know.
-- **Feedback**: If specific sections need more detail (e.g., troubleshooting, advanced deployment), I can expand them.
-
-This README should serve as a comprehensive guide for users and developers while showcasing the project’s capabilities. Let me know if you need further tweaks!
