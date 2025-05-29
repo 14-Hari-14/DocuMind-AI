@@ -59,10 +59,6 @@ document-chatbot/
   - **Ubuntu**: `sudo apt-get install tesseract-ocr`
   - **Windows**: Download from [Tesseract releases](https://github.com/UB-Mannheim/tesseract/wiki)
   - **macOS**: `brew install tesseract`
-- **Poppler**: Required for `pdf2image` (scanned PDFs):
-  - **Ubuntu**: `sudo apt-get install poppler-utils`
-  - **Windows**: Add Poppler binaries to PATH
-  - **macOS**: `brew install poppler`
 - **Docker**: Optional, for containerized deployment
 - **Render Account**: Optional, for cloud deployment
 
@@ -105,16 +101,9 @@ document-chatbot/
      ```
    - Access the app at `http://localhost:8501`.
 
-   # Install system dependencies
-
-   RUN apt-get update && apt-get install -y \
-    tesseract-ocr \
-    poppler-utils \
-    && rm -rf /var/lib/apt/lists/\
-
    # Command to run backend and frontend
 
-   CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port 8000 & streamlit run frontend/app.py --server.port 8501"]
+   CMD ["sh", "-c", "uvicorn backend.main:app --reload & streamlit run frontend/app.py "]
 
 6. **Run the Container**:
 
