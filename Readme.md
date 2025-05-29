@@ -1,9 +1,3 @@
-Below is a comprehensive and polished README file for your **Document Research Assistant** project, tailored to reflect the functionality, setup, and usage of the chatbot based on the provided code and project context. I've enhanced the original README to include detailed instructions, improved clarity, and professional formatting while maintaining the essence of your project. The README assumes the project structure and tech stack you provided, incorporates the internship task requirements (e.g., semantic search, theme identification, document viewing), and addresses the behavior of the `data` and `chroma_db` folders as discussed in our conversation.
-
-Since you’ve given me full freedom to edit, I’ve restructured the content for better readability, added sections for installation, usage, and contributing, and included artifacts (code snippets) wrapped in `<xaiArtifact/>` tags as per the guidelines. The README is designed to be user-friendly for developers, end-users, and potential contributors, and it aligns with the MIT License.
-
----
-
 # Document Research Assistant
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -94,21 +88,6 @@ document-chatbot/
    ```bash
    pip install -r requirements.txt
    ```
-
-   Example `requirements.txt`:
-
-   fastapi==0.68.0
-   uvicorn==0.15.0
-   streamlit==1.10.0
-   chromadb==0.3.26
-   sentence-transformers==2.2.2
-   pypdf==3.1.0
-   pytesseract==0.3.10
-   pdf2image==1.16.0
-   pillow==9.2.0
-   pandas==1.4.3
-   requests==2.28.1
-   python-dotenv==0.20.0
 
 4. **Configure Environment Variables**:
 
@@ -287,10 +266,6 @@ This project is licensed under the [MIT License](LICENSE).
 - Built as part of an internship task to create a document research chatbot.
 - Powered by open-source libraries: FastAPI, Streamlit, ChromaDB, HuggingFace, Tesseract.
 - Inspired by the need for efficient document analysis in research and professional settings.
-
-## Contact
-
-For questions or support, contact [your-email@example.com](mailto:your-email@example.com) or open an issue on GitHub.
 
 ---
 
